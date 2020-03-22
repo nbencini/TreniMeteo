@@ -1,0 +1,14 @@
+# train data
+0,10,20,30,40,50 * * * * root ((python3 ~/viaggiatreno/01_etl_trains.py) >> /mnt/volume_fra1_01/logs/numeri_treni.log 2>&1)
+
+# download weather data
+0 11,23 * * * root ((python3 ~/viaggiatreno/02_etl_weather.py) >> /mnt/volume_fra1_01/logs/download_meteo.log 2>&1)
+
+# MySQL backup
+5 0,8,16 * * * root (/usr/bin/mysqldump --defaults-extra-file=~/.mylogin.cnf -u viaggiatreno --single-transaction --quick --lock-tables=false --all-databases | gzip > /mnt/volume_fra1_01/mysql_backups/viaggiatreno_db-$(date +\%F_\%R).sql.gz ) >> /mnt/volume_fra1_01/mysql-backup.log 2>&1
+
+# MongoDB backup
+0 0,8,16 * * * root mongodump --db tweets_db --archive=/mnt/volume_fra1_01/mongo_backups/tweets_db-$(date +\%F_\%R).gz --gzip >> /mnt/volume_fra1_01/logs/mongo-backup.log 2>&1
+
+# check if tweets collector is running
+* * * * * root /root/viaggiatreno/START_TWEETS.sh

@@ -1,0 +1,21 @@
+{
+    "mongodb": {
+      "host": "xxx.mongodb.net",
+      "database": "trenimeteo",
+      "username": "trenimeteo_app",
+      "password": "--redacted--"
+    },
+    "mysql": {
+        "host": "127.0.0.1",
+        "port": "3306",
+        "database": "viaggiatreno_db",
+        "username": "--redacted--",
+        "password": "--redacted--"
+    },
+    "twitter": {
+      "consumer_key": "",
+      "consumer_secret": "",
+      "access_token": "",
+      "access_token_secret": ""
+    }
+}

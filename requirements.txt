@@ -1,0 +1,10 @@
+tweepy
+re
+pymongo
+logging
+pandas
+sqlalchemy
+matplotlib
+seaborn
+numpy
+pandasql
